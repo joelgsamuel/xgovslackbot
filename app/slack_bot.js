@@ -300,7 +300,9 @@ controller.hears(['^invite.*\\|(.*)>'],
             } else if (body.error === "invalid_auth") {
               bot.replyInThread(message, "Michael Bot-Spall doesn't have the rights to do that");
             } else if (body.error === "already_in_team") {
-              bot.replyInThread(message, "That person is already invited");
+              bot.replyInThread(message, "That person is already a user in this Slack workspace");
+            } else if (body.error === "already_in_team_invited_user") {
+              bot.replyInThread(message, "That person is already a user in this Slack workspace");
             } else {
               bot.replyInThread(message, "Michael Bot-Spall got an error from slack: "+body.error);
             }
